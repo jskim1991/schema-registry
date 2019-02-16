@@ -51,7 +51,7 @@ public class GenericRecordExamples {
         	DataFileWriter<GenericRecord> dataFileWriter = new DataFileWriter<GenericRecord>(datumWriter);
             dataFileWriter.create(customer.getSchema(), new File("customer-generic.avro"));
             dataFileWriter.append(customer);
-            dataFileWriter.close();
+            dataFileWriter.close(); // need this or next() will throw error
             System.out.println("Written customer-generic.avro");
         } catch (IOException e) {
             System.out.println("Couldn't write file");
